@@ -9,8 +9,8 @@ describe("Original vs Modified", () => {
       const originalOutput = calcularMontosSubtotales(testCase);
       const modifiedOutput = calcularMontosSubtotalesModificado(testCase);
 
-      console.log(`\nEjecutando: ${testCase.title}`);
-      console.log("Input:", testCase);
+      // console.log(`\nEjecutando: ${testCase.title}`);
+      // console.log("Input:", testCase);
 
       expect(JSON.stringify(modifiedOutput)).toEqual(JSON.stringify(originalOutput));
     });
