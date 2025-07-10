@@ -1,0 +1,17 @@
+{
+    "name": "calcularmontossubtotales-playground",
+    "version": "1.0.0",
+    "type": "module",
+    "main": "testCases.js",
+    "scripts": {
+        "test": "vitest",
+        "test:run": "vitest run"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+        "vitest": "^3.2.4"
+    }
+}
