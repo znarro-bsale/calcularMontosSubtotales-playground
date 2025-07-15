@@ -1,4 +1,4 @@
-# Playground para probar cambios en función `calcularMontosSubtotales`
+# Playground para probar cambios en función `calcularMontosSubtotales` del FRONT
 
 ## Instalación
 Instala las dependencias con `npm install`
