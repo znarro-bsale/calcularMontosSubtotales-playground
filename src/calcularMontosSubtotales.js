@@ -9,8 +9,9 @@ export function calcularMontosSubtotales(valores) {
   let subtotal_impuesto = 0;
   let subtotal_linea = 0;
   let subtotal_neto = 0;
+  let fallback_decimals = valores.decimales == 0 ? 6 : valores.decimales;
   subtotal_neto =
-    precisionRound(valores.neto_linea, valores.decimales) *
+    precisionRound(valores.neto_linea, fallback_decimals) *
     parseFloat(valores.cantidad);
   if (valores.desglosa_tax == 0) {
     min_value =
@@ -29,7 +30,7 @@ export function calcularMontosSubtotales(valores) {
     bruto_linea =
       parseFloat(bruto_linea) +
       parseFloat(bruto_linea * valores.sumatoria_over_tax);
-    bruto_linea = precisionRound(bruto_linea, valores.decimales);
+    bruto_linea = precisionRound(bruto_linea, fallback_decimals);
 
     valor_unitario_sd =
       parseFloat(valores.neto_linea_sd) +
@@ -61,8 +62,9 @@ export function calcularMontosSubtotales(valores) {
 
     subtotal_impuesto = subtotal_impuesto * valores.cantidad;
     subtotal_linea = bruto_linea * valores.cantidad;
+    bruto_linea = precisionRound(bruto_linea, valores.decimales);
   } else {
-    neto_linea = precisionRound(valores.neto_linea, valores.decimales);
+    neto_linea = precisionRound(valores.neto_linea, fallback_decimals);
     min_value = precisionRound(valores.min_value, valores.decimales);
     valor_unitario_sd = precisionRound(
       valores.neto_linea_sd,
@@ -77,6 +79,7 @@ export function calcularMontosSubtotales(valores) {
       (parseFloat(neto_linea) + subtotal_impuesto) * valores.sumatoria_over_tax;
     subtotal_impuesto = subtotal_impuesto * valores.cantidad;
     subtotal_linea = neto_linea * valores.cantidad;
+    neto_linea = precisionRound(valores.neto_linea, fallback_decimals);
   }
   return {
     neto_linea,
