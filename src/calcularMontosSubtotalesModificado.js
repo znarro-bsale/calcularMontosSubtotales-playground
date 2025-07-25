@@ -20,7 +20,10 @@ export function calcularMontosSubtotalesModificado(valores) {
   let unitario_linea_sd = valores.neto_linea_sd;
   valores.neto_linea = unitario_linea_sd * tipo_cambio_moneda;
 
-  subtotal_neto = parseFloat(valores.neto_linea) * parseFloat(valores.cantidad);
+  subtotal_neto =
+    precisionRound(valores.neto_linea, valores.decimales) *
+    (1 - valores.descuento / 100) *
+    parseFloat(valores.cantidad);
   if (valores.desglosa_tax == 0) {
     min_value =
       parseFloat(valores.min_value) +
